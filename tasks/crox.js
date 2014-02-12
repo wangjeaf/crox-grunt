@@ -73,6 +73,8 @@ module.exports = function(grunt) {
         compiled = doJsBeautify(compiled);
       }
       var targetFile = isJs ? (f + '.js') : f.replace(/\.[\w\d]+$/, '.' + target);
+      grunt.log.writeln();
+      grunt.log.ok('[Crox Compiling]', f, '-->', targetFile);
       grunt.file.write(targetFile, compiled);
     });
   });

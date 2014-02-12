@@ -18,8 +18,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     crox: {
         options: {
-            target: 'nodejs',
-            htmlEncode: 'myHtmlEncode'
+            target: 'nodejs'
         },
         go: {
             src: ['./test/**/*.tpl']
@@ -33,10 +32,23 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadTasks('tasks');
-  
   grunt.loadNpmTasks('grunt-contrib-watch'); 
+  grunt.loadNpmTasks('grunt-contrib-crox'); 
   grunt.loadNpmTasks('grunt-newer');
   grunt.registerTask('default', ['watch']);
 };
+```
+
+## package.json Demo
+
+```js
+{
+  "name": "test-grunt-contrib-crox",
+  "dependencies": {
+    "crox": "*",
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-crox": "*"
+  }
+}
 ```
