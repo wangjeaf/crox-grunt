@@ -11,7 +11,7 @@ Crox 的 Grunt插件
 
 ## Gruntfile.js Demo
 
-*由于使用了grunt-newer插件，请注意new:crox:go*
+*由于使用了grunt-newer插件，请注意newer:crox:go*
 
 ```js
 module.exports = function(grunt) {
