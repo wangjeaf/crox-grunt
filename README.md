@@ -18,7 +18,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     crox: {
         options: {
-            target: 'nodejs'
+            target: 'nodejs',
+            htmlEncode: 'myHtmlEncode'
         },
         go: {
             src: ['./test/**/*.tpl']
