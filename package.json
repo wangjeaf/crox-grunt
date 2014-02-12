@@ -1,12 +1,13 @@
 {
   "name": "grunt-contrib-crox",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Crox task plugin for Grunt.",
   "homepage": "https://github.com/wangjeaf/grunt-contrib-crox",
   "keywords": [
     "Crox",
     "Grunt",
-    "Task"
+    "Task",
+    "Watch"
   ],
   "author": "wangjeaf <wangjeaf@gmail.com>",
   "contributors": [
