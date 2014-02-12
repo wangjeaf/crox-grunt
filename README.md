@@ -3,11 +3,11 @@ grunt-contrib-crox
 
 Crox 的 Grunt插件
 
-## 参数说明
+## Crox任务的options说明
 
-- `target` 翻译的目标语言，支持： `php` `vm` `nodejs`(`commonjs`) `cmd`(`seajs`) `amd`(`requirejs`) `kissy` `kissyfn`
+- `target` 翻译的目标语言，目前支持： `php` | `vm` | `nodejs`(`commonjs`) | `cmd`(`seajs`) | `amd`(`requirejs`) | `kissy` | `kissyfn`
 
-- `modulePrefix` 根模块前缀，例如 `app/sub/module/b` 的 `app`（主要用于js模块的翻译）
+- `modulePrefix` 根模块前缀指定，例如 `app/sub/module/b` 的 `app`（主要用于js模块的翻译）
 
 - `htmlEncode` 翻译的js代码中的html特殊字符转义方法（主要用于js相关翻译）
 
