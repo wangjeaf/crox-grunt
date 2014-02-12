@@ -1,7 +1,13 @@
 grunt-contrib-crox
 ==================
 
-Crox plugin for Grunt.
+Crox 的 Grunt插件
+
+## 参数说明
+
+- target: 翻译的目标语言，支持： `php` `vm` `nodejs`(`commonjs`) `cmd`(`seajs`) `amd`(`requirejs`) `kissy` `kissyfn`
+
+- htmlEncode: 翻译的js代码中的html特殊字符转义方法
 
 ## Gruntfile.js Demo
 
