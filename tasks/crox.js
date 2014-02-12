@@ -33,31 +33,39 @@ module.exports = function(grunt) {
   var compilers = {
     vm: crox.compileToVM,
     php: crox.compileToPhp,
-    js: function(tpl) {
-      return crox.compile(tpl, {htmlEncode: outHtmlEncode}).toString();
-    },
-    kissy: function(tpl) {return helper.compileToKissy(tpl, {htmlEncode: outHtmlEncode})},
-    kissyfn: function(tpl) {return helper.compileToKissyFn(tpl, {htmlEncode: outHtmlEncode})},
-    cmd: function(tpl) {return helper.compileToCMD(tpl, {htmlEncode: outHtmlEncode})},
-    amd: function(tpl) {return helper.compileToAMD(tpl, {htmlEncode: outHtmlEncode})},
-    nodejs: function(tpl) {return helper.compileToCommonJS(tpl, {htmlEncode: outHtmlEncode})}
+    js: function(tpl) {return crox.compile(tpl, getOptions()).toString()},
+    kissy: function(tpl) {return helper.compileToKissy(tpl, getOptions())},
+    kissyfn: function(tpl) {return helper.compileToKissyFn(tpl, getOptions())},
+    cmd: function(tpl) {return helper.compileToCMD(tpl, getOptions())},
+    amd: function(tpl) {return helper.compileToAMD(tpl, getOptions())},
+    nodejs: function(tpl) {return helper.compileToCommonJS(tpl, getOptions())}
   };
   
   compilers.commonjs = compilers.nodejs;
   compilers.seajs = compilers.cmd;
   compilers.requirejs = compilers.amd;
 
-  var outHtmlEncode = '';
+  function getOptions() {
+    return {
+      htmlEncode: outHtmlEncode,
+      modulePrefix: outModulePrefix
+    }
+  }
+
+  var outHtmlEncode = '',
+    outModulePrefix = '';
 
   grunt.registerMultiTask('crox', 'compile crox templates.', function() {
     
     var options = this.options({
       target: grunt.option('target') || 'js',
+      modulePrefix: grunt.option('modulePrefix') || '',
       htmlEncode: grunt.option('htmlEncode') || ''
     });
 
     var target = options.target;
-    outHtmlEncode = options.htmlEncode || '';
+    outHtmlEncode = options.htmlEncode;
+    outModulePrefix = options.modulePrefix;
 
     this.filesSrc.forEach(function(f) {
       var content = grunt.file.read(f);

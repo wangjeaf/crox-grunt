@@ -5,9 +5,11 @@ Crox 的 Grunt插件
 
 ## 参数说明
 
-- target: 翻译的目标语言，支持： `php` `vm` `nodejs`(`commonjs`) `cmd`(`seajs`) `amd`(`requirejs`) `kissy` `kissyfn`
+- `target` 翻译的目标语言，支持： `php` `vm` `nodejs`(`commonjs`) `cmd`(`seajs`) `amd`(`requirejs`) `kissy` `kissyfn`
 
-- htmlEncode: 翻译的js代码中的html特殊字符转义方法
+- `modulePrefix` 根模块前缀，例如 `app/sub/module/b` 的 `app`（主要用于js模块的翻译）
+
+- `htmlEncode` 翻译的js代码中的html特殊字符转义方法（主要用于js相关翻译）
 
 ## Gruntfile.js Demo
 
@@ -21,6 +23,7 @@ module.exports = function(grunt) {
     crox: {
         options: {
             target: 'nodejs',
+            modulePrefix: 'app',
             htmlEncode: 'myHtmlEncode'
         },
         go: {
@@ -41,6 +44,12 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['watch']);
 };
 ```
+
+## 使用
+
+- `grunt watch` 开启 `watch`，实时检测Crox模板文件改动
+
+- `grunt crox` 执行所有匹配文件的翻译
 
 ## package.json Demo
 

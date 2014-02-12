@@ -5,6 +5,7 @@ module.exports = function(grunt) {
     crox: {
         options: {
             target: 'nodejs',
+            modulePrefix: 'app',
             htmlEncode: 'myHtmlEncode'
         },
         go: {
