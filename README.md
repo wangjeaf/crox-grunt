@@ -1,4 +1,4 @@
 grunt-contrib-crox
 ==================
 
-crox plugin for grunt
+Crox plugin for Grunt.
