@@ -4,24 +4,24 @@ module.exports = function(grunt) {
   grunt.initConfig({
     crox: {
         options: {
-            a: 11,
-            b: 21
+            target: 'nodejs',
+            htmlEncode: 'myHtmlEncode'
         },
-        test: {
+        go: {
             src: ['./test/**/*.tpl']
         }
     },
     watch: {
         crox: {
-            files: ['<%= crox.test.src %>'],
-            tasks: ['crox']
+            files: ['<%= crox.go.src %>'],
+            tasks: ['newer:crox:go']
         }
     }
   });
 
   grunt.loadTasks('tasks');
   
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
+  grunt.loadNpmTasks('grunt-contrib-watch'); 
+  grunt.loadNpmTasks('grunt-newer');
   grunt.registerTask('default', ['watch']);
 };

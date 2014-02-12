@@ -1,6 +1,6 @@
 {
   "name": "grunt-contrib-crox",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Crox task plugin for Grunt.",
   "homepage": "https://github.com/wangjeaf/grunt-contrib-crox",
   "keywords": [
@@ -16,11 +16,13 @@
     "node": ">= 0.8.17"
   },
   "dependencies": {
-    "crox": "*"
+    "crox": "*",
+    "js-beautify": "~1.4.0"
   },
   "devDependencies": {
-    "grunt": "0.4.1",
-    "grunt-contrib-watch": "*"
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "*",
+    "grunt-newer": "~0.6.1"
   },
   "repository": {
     "type": "git",
