@@ -44,6 +44,7 @@ module.exports = function(grunt) {
   compilers.commonjs = compilers.nodejs;
   compilers.seajs = compilers.cmd;
   compilers.requirejs = compilers.amd;
+  compilers.vm2 = compilers.vm;
 
   function getOptions() {
     return {
@@ -78,7 +79,7 @@ module.exports = function(grunt) {
       targets.forEach(function(target) {
         target = target.trim();
         var compiler = compilers[target];
-        var isJs = target != 'vm' && target != 'php';
+        var isJs = target != 'vm' && target != 'vm2' && target != 'php';
         var compiled;
         if (isJs && target != 'js') {
           compiled = compiler(f);
@@ -88,7 +89,10 @@ module.exports = function(grunt) {
         if (isJs) {
           compiled = doJsBeautify(compiled);
         }
-        var targetFile = isJs ? (f + '.js') : f.replace(/\.[\w\d]+$/, '.' + target);
+        if (target == 'vm2') {
+          compiled = compiled.replace(/#\{end\}/g, '#end');
+        }
+        var targetFile = isJs ? (f + '.js') : f.replace(/\.[\w\d]+$/, '.' + (target == 'vm2' ? 'vm' : target));
         grunt.log.writeln();
         grunt.log.ok('[Crox Compiling]', f, '-->', targetFile);
         grunt.file.write(targetFile, compiled);
