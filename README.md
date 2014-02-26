@@ -5,7 +5,7 @@ Crox 的 Grunt插件
 
 ## Crox任务的options说明
 
-- `target` 翻译的目标语言，目前支持： `php` | `vm` | `nodejs`(`commonjs`) | `cmd`(`seajs`) | `amd`(`requirejs`) | `kissy` | `kissyfn`
+- `target` 翻译的目标语言，可同时翻译成多个，用 `,` 隔开。目前支持： `php` | `vm` | `nodejs`(`commonjs`) | `cmd`(`seajs`) | `amd`(`requirejs`) | `kissy` | `kissyfn`
 
 - `modulePrefix` 根模块前缀指定，例如 `app/sub/module/b` 的 `app`（主要用于js模块的翻译）
 
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     crox: {
         options: {
-            target: 'nodejs',
+            target: 'vm,nodejs',
             modulePrefix: 'app',
             htmlEncode: 'myHtmlEncode'
         },

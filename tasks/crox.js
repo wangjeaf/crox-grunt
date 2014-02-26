@@ -64,26 +64,35 @@ module.exports = function(grunt) {
     });
 
     var target = options.target;
+    var targets;
+    if (target.indexOf(',') != -1) {
+      targets = target.split(',');
+    } else {
+      targets = [target];
+    }
     outHtmlEncode = options.htmlEncode;
     outModulePrefix = options.modulePrefix;
 
     this.filesSrc.forEach(function(f) {
       var content = grunt.file.read(f);
-      var compiler = compilers[target];
-      var isJs = target != 'vm' && target != 'php';
-      var compiled;
-      if (isJs && target != 'js') {
-        compiled = compiler(f);
-      } else {
-        compiled = compiler(content);
-      }
-      if (isJs) {
-        compiled = doJsBeautify(compiled);
-      }
-      var targetFile = isJs ? (f + '.js') : f.replace(/\.[\w\d]+$/, '.' + target);
-      grunt.log.writeln();
-      grunt.log.ok('[Crox Compiling]', f, '-->', targetFile);
-      grunt.file.write(targetFile, compiled);
+      targets.forEach(function(target) {
+        target = target.trim();
+        var compiler = compilers[target];
+        var isJs = target != 'vm' && target != 'php';
+        var compiled;
+        if (isJs && target != 'js') {
+          compiled = compiler(f);
+        } else {
+          compiled = compiler(content);
+        }
+        if (isJs) {
+          compiled = doJsBeautify(compiled);
+        }
+        var targetFile = isJs ? (f + '.js') : f.replace(/\.[\w\d]+$/, '.' + target);
+        grunt.log.writeln();
+        grunt.log.ok('[Crox Compiling]', f, '-->', targetFile);
+        grunt.file.write(targetFile, compiled);
+      })
     });
   });
 
