@@ -1,6 +1,6 @@
 {
   "name": "crox-grunt",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Crox task plugin for Grunt.",
   "homepage": "https://github.com/wangjeaf/crox-grunt",
   "keywords": [

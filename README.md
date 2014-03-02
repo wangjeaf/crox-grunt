@@ -60,7 +60,7 @@ module.exports = function(grunt) {
     "crox": "*",
     "grunt": "~0.4.2",
     "grunt-contrib-watch": "*",
-    "grunt-contrib-crox": "*"
+    "crox-grunt": "*"
   }
 }
 ```
