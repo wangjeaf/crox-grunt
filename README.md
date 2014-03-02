@@ -1,4 +1,4 @@
-grunt-contrib-crox
+crox-grunt
 ==================
 
 Crox 的 Grunt插件
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch'); 
-  grunt.loadNpmTasks('grunt-contrib-crox'); 
+  grunt.loadNpmTasks('crox-grunt'); 
   grunt.loadNpmTasks('grunt-newer');
   grunt.registerTask('default', ['watch']);
 };
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
 
 ```js
 {
-  "name": "test-grunt-contrib-crox",
+  "name": "test-crox-grunt",
   "dependencies": {
     "crox": "*",
     "grunt": "~0.4.2",

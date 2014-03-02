@@ -1,6 +1,6 @@
 /*
- * grunt-contrib-crox
- * https://github.com/wangjeaf/grunt-contrib-crox
+ * crox-grunt
+ * https://github.com/wangjeaf/crox-grunt
  *
  * Copyright (c) 2014 wangjeaf <wangjeaf@gmail.com>
  * Licensed under the MIT license.
