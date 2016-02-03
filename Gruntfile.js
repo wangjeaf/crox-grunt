@@ -6,7 +6,8 @@ module.exports = function(grunt) {
         options: {
             target: 'nodejs',
             modulePrefix: 'app',
-            htmlEncode: 'myHtmlEncode'
+            htmlEncode: 'myHtmlEncode',
+            flatten: true
         },
         go: {
             src: ['./test/**/*.tpl']

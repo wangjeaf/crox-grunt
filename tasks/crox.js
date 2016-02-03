@@ -8,6 +8,7 @@
 module.exports = function(grunt) {
   var crox = require('crox');
   var helper = require('crox/bin/helper');
+  var precompiler = require('crox/lib/precompile-node').precompile;
   var jsBeautify = require('js-beautify').js_beautify;
 
   function doJsBeautify(str) {
@@ -61,7 +62,8 @@ module.exports = function(grunt) {
     var options = this.options({
       target: grunt.option('target') || 'js',
       modulePrefix: grunt.option('modulePrefix') || '',
-      htmlEncode: grunt.option('htmlEncode') || ''
+      htmlEncode: grunt.option('htmlEncode') || '',
+      flatten: grunt.option('flatten') || false
     });
 
     var target = options.target;
@@ -81,9 +83,23 @@ module.exports = function(grunt) {
         var compiler = compilers[target];
         var isJs = target != 'vm' && target != 'vm2' && target != 'php';
         var compiled;
+
         if (isJs && target != 'js') {
-          compiled = compiler(f);
+          if (options.flatten) {
+            // precompiler的参数是file，为了确保模块分析是在正常位置，所以只能写原文件了
+            grunt.file.write(f, precompiler(f));
+            // compiler的参数也是file
+            compiled = compiler(f);
+            // 源文件的内容已经在precompiler之后被修改了，还需要再改回去
+            grunt.file.write(f, content);
+          } else {
+            compiled = compiler(f);
+          }
         } else {
+          if (options.flatten) {
+            // 调用crox的precompiler读取文件替换之
+            content = precompiler(f);
+          }
           compiled = compiler(content);
         }
         if (isJs) {
