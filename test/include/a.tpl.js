@@ -10,5 +10,11 @@ module.exports = function(root
     _s += " - ";
     _t = root.c;
     if (_t != null) _s += myHtmlEncode(_t);
+    _s += "\n";
+    _t = root.d;
+    if (_t != null) _s += myHtmlEncode(_t);
+    _s += "\n\n";
+    _t = root.e;
+    if (_t != null) _s += myHtmlEncode(_t);
     return _s;
 };

@@ -2,12 +2,6 @@ module.exports = function(root
     /**/
 ) {
     var _t, _s = '';
-    _t = root.b;
-    if (_t != null) _s += myHtmlEncode(_t);
-    _s += " - ";
-    _t = root.c;
-    if (_t != null) _s += myHtmlEncode(_t);
-    _s += "\n";
     _t = root.d;
     if (_t != null) _s += myHtmlEncode(_t);
     _s += "\n\n";
