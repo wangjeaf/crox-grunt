@@ -11,6 +11,8 @@ Crox 的 Grunt插件
 
 - `htmlEncode` 翻译的js代码中的html特殊字符转义方法（主要用于js相关翻译）
 
+- `flatten` 是否把include都打平（读取真实文件内容替换）
+
 ## Gruntfile.js Demo
 
 *由于使用了grunt-newer插件，请注意newer:crox:go*
@@ -24,7 +26,8 @@ module.exports = function(grunt) {
         options: {
             target: 'vm,nodejs',
             modulePrefix: 'app',
-            htmlEncode: 'myHtmlEncode'
+            htmlEncode: 'myHtmlEncode',
+            flatten: true
         },
         go: {
             src: ['./test/**/*.tpl']
@@ -57,7 +60,7 @@ module.exports = function(grunt) {
 {
   "name": "test-crox-grunt",
   "dependencies": {
-    "crox": "*",
+    "crox": "^1.4.4",
     "grunt": "~0.4.2",
     "grunt-contrib-watch": "*",
     "crox-grunt": "*"
